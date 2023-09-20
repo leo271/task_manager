@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:task_manager/home_page/task_create_modal.dart';
 import 'package:task_manager/home_page/task_state.dart';
 import 'appbar.dart';
 import 'categories.dart';
@@ -68,32 +66,23 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _showTaskCreateModal(BuildContext context) {
-    if (isModalOpen) return;
-    setState(() {
-      isModalOpen = true;
-    });
-    try {
-      showModalBottomSheet(
+    showDialog(
         context: context,
-        backgroundColor: Color.fromARGB(223, 0, 0, 0),
         builder: (BuildContext context) {
-          return Column(children: [
-            const Spacer(),
-            // 画面の下半分に表示
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.5,
-              child: TaskCreateModal(
-                addTask: _addTask,
+          return AlertDialog(
+            title: const Text('タスクの追加'),
+            content: TextField(
+              autofocus: true,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
               ),
+              onSubmitted: (value) {
+                _addTask(TaskState(title: value));
+                Navigator.pop(context);
+              },
             ),
-          ]);
-        },
-      ).then((_) => setState(() {
-            isModalOpen = false;
-          }));
-    } catch (e) {
-      debugPrint(e.toString());
-    }
+          );
+        });
     // final colorScheme = Theme.of(context).colorScheme;
   }
 
