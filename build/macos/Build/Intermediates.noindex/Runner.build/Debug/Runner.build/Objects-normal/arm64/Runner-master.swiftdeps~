@@ -1,0 +1,8 @@
+version: "Apple Swift version 5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)"
+options: "3c41df6b91ddb3563c7405181e756dbb4e21acc9d457724523f6b93bfd755ebe"
+build_start_time: [1695256188, 26683000]
+build_end_time: [1695256188, 57741000]
+inputs:
+  "/Users/hagiwaraleo/Development/task_manager/macos/Flutter/GeneratedPluginRegistrant.swift": !private [1695256178, 487587006]
+  "/Users/hagiwaraleo/Development/task_manager/macos/Runner/AppDelegate.swift": !private [1692812501, 0]
+  "/Users/hagiwaraleo/Development/task_manager/macos/Runner/MainFlutterWindow.swift": !private [1692812501, 0]
