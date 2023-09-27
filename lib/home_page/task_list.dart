@@ -26,16 +26,24 @@ class _TaskListState extends State<TaskList> {
           children: [
             IconButton(
                 onPressed: () {},
-                icon: Icon(
-                  Icons.edit,
-                  color: colorScheme.secondary,
+                icon: Row(
+                  children: [
+                    Icon(
+                      Icons.edit,
+                      color: colorScheme.secondary,
+                    ),
+                    Text("編集", style: TextStyle(color: colorScheme.secondary)),
+                  ],
                 )),
-            Text("編集", style: TextStyle(color: colorScheme.secondary)),
             const SizedBox(width: 10),
             IconButton(
                 onPressed: () {},
-                icon: Icon(Icons.info, color: colorScheme.secondary)),
-            Text("その他", style: TextStyle(color: colorScheme.secondary)),
+                icon: Row(
+                  children: [
+                    Icon(Icons.info, color: colorScheme.secondary),
+                    Text("その他", style: TextStyle(color: colorScheme.secondary)),
+                  ],
+                )),
           ],
         ),
         Container(
@@ -47,6 +55,7 @@ class _TaskListState extends State<TaskList> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: CheckboxListTile(
+                  controlAffinity: ListTileControlAffinity.leading,
                   title: Text(widget.tasks[index].title,
                       style: TextStyle(
                           color: colorScheme.onSurface,
@@ -54,9 +63,7 @@ class _TaskListState extends State<TaskList> {
                               ? TextDecoration.lineThrough
                               : null)),
                   value: widget.tasks[index].isDone,
-                  onChanged: (bool? value) {
-                    widget.toggleSelected(index);
-                  },
+                  onChanged: (_) => widget.toggleSelected(index),
                 ),
               )
           ]),
